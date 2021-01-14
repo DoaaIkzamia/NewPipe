@@ -1635,8 +1635,10 @@ public class VideoPlayerImpl extends VideoPlayer
         final SharedPreferences sharedPreferences =
                 PreferenceManager.getDefaultSharedPreferences(service);
         popupWidth = popupRememberSizeAndPos
-                ? sharedPreferences.getFloat(POPUP_SAVED_WIDTH, defaultSize)
-                : defaultSize;
+                ? defaultSize
+                : sharedPreferences.getFloat(POPUP_SAVED_WIDTH, defaultSize); 
+        /*I made change here you added an option to remember the size of the popup, and in case it was false 
+         they always go back to the default size.*/
         popupHeight = getMinimumVideoHeight(popupWidth);
 
         popupLayoutParams = new WindowManager.LayoutParams(
